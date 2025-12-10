@@ -1,42 +1,52 @@
+/* ===== GENERAL ===== */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffd9fb, #dffff6);
+    background: linear-gradient(135deg, #d9f7ff, #f0ffd9); /* azul y verde pastel */
     overflow-x: hidden;
 }
 
 header {
     text-align: center;
-    padding: 40px 20px;
+    padding: 30px 15px;
     background: #ffffffcc;
     backdrop-filter: blur(6px);
     box-shadow: 0 4px 20px #00000030;
 }
 
 header h1 {
-    font-size: 46px;
-    color: #ff4fa5;
-    text-shadow: 2px 2px #ffd8ef;
+    font-size: clamp(28px, 5vw, 46px);
+    color: #4a90e2; /* azul pastel */
+    text-shadow: 2px 2px #cce6ff;
+    animation: tituloAnim 2s infinite alternate;
+}
+
+@keyframes tituloAnim {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.05) rotate(-2deg);}
+    100% {transform: scale(1) rotate(2deg);}
 }
 
 header h3 {
-    color: #ff33a8;
+    color: #3cb371; /* verde pastel */
+    font-size: clamp(16px, 2vw, 24px);
 }
 
 .contenedor-principal {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px;
 }
 
+/* ===== MENSAJE PROFESORA ===== */
 .mensaje-prof {
     background: #fff;
     border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 50px;
+    padding: 20px;
+    margin-bottom: 40px;
     box-shadow: 0 6px 25px #00000025;
     animation: fadeIn 1.5s;
-    font-size: 18px;
+    font-size: clamp(16px, 1.5vw, 20px);
     line-height: 1.6;
 }
 
@@ -45,60 +55,57 @@ header h3 {
     to {opacity:1; transform: translateY(0);}
 }
 
-.galeria {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
+/* ===== BOTONES ===== */
 .btn {
-    padding: 12px 22px;
+    padding: 10px 20px;
     border: none;
-    background: #ff6fca;
+    background: #ffb347; /* naranja pastel */
     color: white;
-    font-size: 18px;
+    font-size: clamp(14px, 1.5vw, 18px);
     border-radius: 15px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: #ff3aac;
+    background: #ffcc66;
     transform: scale(1.05);
 }
 
+/* ===== JUEGOS ===== */
 .juegos {
     display: flex;
     flex-direction: column;
-    gap: 40px; /* mayor espacio entre juegos */
+    gap: 30px;
     margin-bottom: 50px;
 }
 
 .card {
     background: #ffffffdd;
     border-radius: 20px;
-    padding: 25px;
+    padding: 20px;
     box-shadow: 0 6px 25px #00000025;
     text-align: center;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
-/* MEMORIA */
+/* ===== MEMORIA ===== */
 #memoria {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 10px;
     margin-top: 20px;
 }
 
 .carta {
-    background: #ffe6ff;
-    padding: 25px;
+    background: #fff4cc; /* amarillo pastel */
+    padding: 20px;
     border-radius: 12px;
-    font-size: 28px;
+    font-size: clamp(20px, 4vw, 28px);
     cursor: pointer;
     user-select: none;
     box-shadow: 0 4px 10px #00000020;
@@ -106,32 +113,57 @@ header h3 {
 }
 
 .carta.volteada {
-    background: #ffb3f1;
-    color: #fff;
-    transform: rotateY(180deg);
+    background: #cce6ff; /* azul pastel */
+    color: #000;
+    transform: rotateY(180deg) scale(1.05);
 }
 
-/* PUZZLE */
-#puzzle {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 20px;
+/* ===== AHORCADO ===== */
+.palabra-ahorcado {
+    font-size: clamp(18px, 4vw, 24px);
+    letter-spacing: 3px;
 }
 
-.pieza {
-    background: #fff0ff;
-    border-radius: 12px;
-    padding: 25px;
-    font-size: 22px;
-    cursor: grab;
-    box-shadow: 0 4px 12px #00000025;
+/* ===== MENSAJE FINAL ===== */
+.mensaje-final {
+    animation: brillar 2s infinite alternate;
+    background: #e0ffe0; /* verde pastel */
 }
 
+.mensaje-final ul {
+    text-align:left;
+    font-size: clamp(14px, 2vw, 16px);
+    line-height:1.5;
+}
+
+@keyframes brillar {
+    0% {box-shadow: 0 0 5px #8bc34a;}
+    50% {box-shadow: 0 0 20px #4caf50;}
+    100% {box-shadow: 0 0 5px #8bc34a;}
+}
+
+/* ===== FOOTER ===== */
 footer {
     text-align: center;
     padding: 20px;
-    background: #ff6fca;
+    background: #4a90e2; /* azul pastel */
     color: white;
-    font-size: 18px;
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+/* ===== RESPONSIVE MEDIA ===== */
+@media (max-width:600px){
+    .card {
+        padding: 15px;
+    }
+    .btn {
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+    header h1 {
+        font-size: 32px;
+    }
+    header h3 {
+        font-size: 18px;
+    }
 }
