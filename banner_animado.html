@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Banner Animado Vivo</title>
+    <link rel="stylesheet" href="estilo_banner.css">
+</head>
+<body>
+    <div class="contenedor-central">
+        <div class="banner">
+            <img src="img/promo.jpg" alt="Banner" />
+        </div>
+    </div>
+
+    <script>
+        const imagenes = [
+            'img/promo.jpg',
+            'img/recuerdo.jpg',
+            'img/carnaval.jpg',
+            'img/IMG-20251208-WA0019.jpg',
+            'img/IMG-20251208-WA0022.jpg',
+            'img/IMG-20251208-WA0025.jpg',
+            'img/IMG-20251208-WA0032.jpg',
+            'img/IMG-20251208-WA0046.jpg',
+            'img/viaje.jpg',
+            'img/IMG-20251208-WA0058.jpg',
+            'img/IMG-20251208-WA0060.jpg'
+        ];
+
+        let indice = 0;
+        const bannerImg = document.querySelector('.banner img');
+
+        function cambiarImagen() {
+            bannerImg.style.opacity = 0;
+            setTimeout(() => {
+                bannerImg.src = imagenes[indice];
+                bannerImg.style.opacity = 1;
+                indice = (indice + 1) % imagenes.length;
+            }, 300);
+        }
+
+        setInterval(cambiarImagen, 3000);
+    </script>
+</body>
+</html>

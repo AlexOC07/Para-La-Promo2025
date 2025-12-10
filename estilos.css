@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffd9fb, #dffff6);
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: #ffffffcc;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 20px #00000030;
+}
+
+header h1 {
+    font-size: 46px;
+    color: #ff4fa5;
+    text-shadow: 2px 2px #ffd8ef;
+}
+
+header h3 {
+    color: #ff33a8;
+}
+
+.contenedor-principal {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.mensaje-prof {
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 50px;
+    box-shadow: 0 6px 25px #00000025;
+    animation: fadeIn 1.5s;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+.galeria {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.btn {
+    padding: 12px 22px;
+    border: none;
+    background: #ff6fca;
+    color: white;
+    font-size: 18px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff3aac;
+    transform: scale(1.05);
+}
+
+.juegos {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* mayor espacio entre juegos */
+    margin-bottom: 50px;
+}
+
+.card {
+    background: #ffffffdd;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 6px 25px #00000025;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+/* MEMORIA */
+#memoria {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.carta {
+    background: #ffe6ff;
+    padding: 25px;
+    border-radius: 12px;
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 4px 10px #00000020;
+    transition: 0.3s;
+}
+
+.carta.volteada {
+    background: #ffb3f1;
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+/* PUZZLE */
+#puzzle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pieza {
+    background: #fff0ff;
+    border-radius: 12px;
+    padding: 25px;
+    font-size: 22px;
+    cursor: grab;
+    box-shadow: 0 4px 12px #00000025;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #ff6fca;
+    color: white;
+    font-size: 18px;
+}

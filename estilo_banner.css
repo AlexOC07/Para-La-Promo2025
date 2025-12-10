@@ -1,0 +1,103 @@
+/* ===== Centrar todo en la pantalla ===== */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    font-family: Arial, sans-serif;
+}
+
+.contenedor-central {
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
+    position: relative;
+}
+
+/* ===== Banner ===== */
+.banner {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,255,255,0.05);
+}
+
+/* Imagen adaptable */
+.banner img {
+    width: 100%;
+    height: auto; /* Mantiene proporción */
+    display: block;
+    transition: opacity 0.5s ease-in-out, transform 10s ease-in-out; /* zoom lento */
+    transform-origin: center center;
+    animation: zoom 20s infinite alternate; /* zoom continuo */
+    max-height: 80vh; /* No ocupa más de la pantalla */
+}
+
+/* Overlay dinámico con brillo */
+.banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
+    pointer-events: none;
+    z-index: 1;
+    animation: brillo 5s infinite ease-in-out alternate, destello 7s infinite linear;
+}
+
+/* Animación de brillo suave */
+@keyframes brillo {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.35; }
+}
+
+/* Destellos de luz animados */
+@keyframes destello {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 100%; }
+}
+
+/* Zoom continuo de la imagen */
+@keyframes zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.03); }
+}
+
+/* Hover extra */
+.banner:hover img {
+    transform: scale(1.05); /* aumenta ligeramente al pasar el mouse */
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(255,255,255,0.1);
+}
+
+/* ===== MEDIA QUERIES: adaptación para móviles ===== */
+@media (max-width: 768px) {
+    .contenedor-central {
+        width: 95%;
+    }
+
+    .banner {
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.05);
+    }
+
+    .banner img {
+        max-height: 60vh; /* Para que se ajuste mejor en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .banner {
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(255,255,255,0.05);
+    }
+
+    .banner img {
+        max-height: 50vh;
+    }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Recuerdo de Fin de Año</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+    <h1>🌟 Recuerdo de Fin de Año 🌟</h1>
+    <h3>Con mucho cariño de su profesora 💖</h3>
+</header>
+
+<main class="contenedor-principal">
+
+    <!-- MENSAJE DE LA PROFESORA -->
+    <section class="mensaje-prof">
+        <p>Queridos niños:</p>
+        <p>Hoy cerramos un año lleno de risas, aprendizajes, juegos y hermosos momentos.  
+        Cada uno de ustedes tiene una luz única que ilumina el aula y llena mi corazón de alegría.  
+        Me siento orgullosa de todo lo que lograron, por su esfuerzo y por nunca rendirse.</p>
+
+        <p><b>“Ustedes pueden llegar tan lejos como crean en su corazón.”</b></p>
+
+        <p>Gracias por cada día compartido, por cada sonrisa, por cada abrazo y por enseñarme a mí también.  
+        Jamás olviden que ustedes son especiales, valiosos y capaces de todo.</p>
+
+        <p style="text-align:right;"><b>Con mucho cariño, su profesora.</b></p>
+    </section>
+
+    <!-- BOTÓN A LA GALERÍA -->
+    <section class="galeria">
+        <button class="btn" onclick="location.href='banner_animado.html'">📸 Ver Todas las Fotos</button>
+    </section>
+
+    <!-- SECCIÓN DE JUEGOS -->
+    <section class="juegos">
+
+        <!-- ADIVINANZAS -->
+        <div class="card">
+            <h2>❓ Adivinanza Mágica</h2>
+            <p id="pregunta"></p>
+            <input id="respuesta" placeholder="Escribe tu respuesta...">
+            <button class="btn" onclick="comprobar()">Responder</button>
+        </div>
+
+        <!-- SUMA MÁGICA -->
+        <div class="card">
+            <h2>➕ Suma Mágica</h2>
+            <p id="sumita"></p>
+            <input id="resSuma" placeholder="Resultado...">
+            <button class="btn" onclick="verificarSuma()">Comprobar</button>
+        </div>
+
+        <!-- MEMORIA -->
+        <div class="card">
+            <h2>🧠 Juego de Memoria</h2>
+            <div id="memoria"></div>
+            <button class="btn" onclick="iniciarMemoria()">Reiniciar</button>
+        </div>
+
+        <!-- NUEVO JUEGO: AHORCADO EDUCATIVO -->
+        <div class="card">
+            <h2>🪢 Completa la palabra (Ahorcado)</h2>
+            <p id="ahorcadoPalabra" style="font-size:24px; letter-spacing:5px;"></p>
+            <input id="ahorcadoInput" maxlength="1" placeholder="Escribe una letra">
+            <button class="btn" onclick="adivinarLetra()">Probar letra</button>
+            <p id="ahorcadoIntentos"></p>
+            <p id="ahorcadoLetras"></p>
+        </div>
+
+        <!-- PUZZLE -->
+        <div class="card">
+            <h2>🧩 Rompecabezas Fácil</h2>
+            <p>Ordena las piezas para completar correctamente.</p>
+            <div id="puzzle"></div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    “Gracias por hacer de este año algo inolvidable.” 🌸
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
