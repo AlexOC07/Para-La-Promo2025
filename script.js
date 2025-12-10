@@ -54,7 +54,7 @@ function voltear(carta) {
     } else {
         segunda = carta;
         bloqueo = true;
-        setTimeout(()=>{
+        setTimeout(()=> {
             if(primera.dataset.valor !== segunda.dataset.valor){
                 primera.textContent = "";
                 segunda.textContent = "";
@@ -68,61 +68,6 @@ function voltear(carta) {
     }
 }
 iniciarMemoria();
-
-/* ----------------------- PUZZLE FUNCIONAL ----------------------- */
-function cargarPuzzle() {
-    const puzzle = document.getElementById("puzzle");
-    puzzle.innerHTML = "";
-
-    const piezas = ["A","B","C","D","E","F","G","H","I"];
-    const mezcladas = piezas.sort(() => Math.random() - 0.5);
-
-    mezcladas.forEach((p) => {
-        let div = document.createElement("div");
-        div.className = "pieza";
-        div.draggable = true;
-        div.textContent = p;
-
-        div.addEventListener("dragstart", dragStart);
-        div.addEventListener("dragover", dragOver);
-        div.addEventListener("drop", drop);
-        puzzle.appendChild(div);
-    });
-}
-
-let dragSrc = null;
-
-function dragStart(e){
-    dragSrc = this;
-    e.dataTransfer.effectAllowed = "move";
-}
-
-function dragOver(e){
-    e.preventDefault();
-}
-
-function drop(e){
-    e.preventDefault();
-    if(dragSrc !== this){
-        let tmp = this.textContent;
-        this.textContent = dragSrc.textContent;
-        dragSrc.textContent = tmp;
-    }
-    checkPuzzle();
-}
-
-function checkPuzzle(){
-    const puzzle = document.getElementById("puzzle").children;
-    const correct = ["A","B","C","D","E","F","G","H","I"];
-    let aciertos = 0;
-    for(let i=0; i<puzzle.length; i++){
-        if(puzzle[i].textContent === correct[i]) aciertos++;
-    }
-    if(aciertos === correct.length){
-        setTimeout(()=> alert("¡Felicidades! Rompecabezas completado 🎉"), 100);
-    }
-}
-cargarPuzzle();
 
 /* ----------------------- AHORCADO EDUCATIVO ----------------------- */
 const palabras = [
@@ -173,7 +118,7 @@ function adivinarLetra(){
         document.getElementById("ahorcadoPalabra").textContent = palabraMostrar;
 
         if(!palabraMostrar.includes("_")){
-            alert(`¡Ganaste! 🎉 La palabra era ${palabraActual}`);
+            alert(`🎉 ¡Ganaste! La palabra era ${palabraActual}`);
             iniciarAhorcado();
         }
     } else {
@@ -185,7 +130,7 @@ function adivinarLetra(){
         document.getElementById("ahorcadoLetras").textContent = `Letras incorrectas: ${letrasIncorrectas.join(", ")}`;
 
         if(intentos === 0){
-            alert(`Perdiste 😢 La palabra era ${palabraActual}`);
+            alert(`😢 Perdiste. La palabra era ${palabraActual}`);
             iniciarAhorcado();
         }
     }
