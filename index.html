@@ -2,36 +2,37 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recuerdo de Fin de Año</title>
 <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
 <header>
-    <h1>🌟 Recuerdo de Fin de Año 🌟</h1>
-    <h3>Con mucho cariño de su profesora 💖</h3>
+    <h1>🌟 Recuerdo Para Mi Querido Curso Sexto "C" Promo 2025🌟</h1>
+    <h3>Con mucho cariño de su profesora Jhanet Cabrera Sandoval💖</h3>
 </header>
 
 <main class="contenedor-principal">
 
     <!-- MENSAJE DE LA PROFESORA -->
     <section class="mensaje-prof">
-        <p>Queridos niños:</p>
-        <p>Hoy cerramos un año lleno de risas, aprendizajes, juegos y hermosos momentos.  
-        Cada uno de ustedes tiene una luz única que ilumina el aula y llena mi corazón de alegría.  
-        Me siento orgullosa de todo lo que lograron, por su esfuerzo y por nunca rendirse.</p>
+        <p>Mis Queridos niños:</p>
+        <p>Hoy cerramos un año lleno de risas, aprendizajes, juegos y hermosos momentos.<br>  
+        Cada uno de ustedes tiene una luz única que ilumina el aula y llena mi corazón de alegría.<br>  
+        Me siento orgullosa de todo lo que lograron, por su esfuerzo y por nunca rendirse siempre sigan adelante nunca se rindan y recuerden en valorar todo lo que tienen.</p>
 
         <p><b>“Ustedes pueden llegar tan lejos como crean en su corazón.”</b></p>
 
         <p>Gracias por cada día compartido, por cada sonrisa, por cada abrazo y por enseñarme a mí también.  
         Jamás olviden que ustedes son especiales, valiosos y capaces de todo.</p>
 
-        <p style="text-align:right;"><b>Con mucho cariño, su profesora.</b></p>
+        <p style="text-align:right;"><b>Con mucho cariño, su profesora Jhanet Cabrera Sandoval.</b></p>
     </section>
 
     <!-- BOTÓN A LA GALERÍA -->
     <section class="galeria">
-        <button class="btn" onclick="location.href='banner_animado.html'">📸 Ver Todas las Fotos</button>
+        <button class="btn" onclick="location.href='banner_animado.html'">📸 Ver Nuestros Recuerdos de todo el Año</button>
     </section>
 
     <!-- SECCIÓN DE JUEGOS -->
@@ -57,24 +58,31 @@
         <div class="card">
             <h2>🧠 Juego de Memoria</h2>
             <div id="memoria"></div>
-            <button class="btn" onclick="iniciarMemoria()">Reiniciar</button>
+            <button class="btn" onclick="iniciarMemoria()">Vuelve A Intentar</button>
         </div>
 
-        <!-- NUEVO JUEGO: AHORCADO EDUCATIVO -->
+        <!-- AHORCADO EDUCATIVO -->
         <div class="card">
             <h2>🪢 Completa la palabra (Ahorcado)</h2>
-            <p id="ahorcadoPalabra" style="font-size:24px; letter-spacing:5px;"></p>
+            <p id="ahorcadoPalabra" class="palabra-ahorcado"></p>
             <input id="ahorcadoInput" maxlength="1" placeholder="Escribe una letra">
             <button class="btn" onclick="adivinarLetra()">Probar letra</button>
             <p id="ahorcadoIntentos"></p>
             <p id="ahorcadoLetras"></p>
         </div>
 
-        <!-- PUZZLE -->
-        <div class="card">
-            <h2>🧩 Rompecabezas Fácil</h2>
-            <p>Ordena las piezas para completar correctamente.</p>
-            <div id="puzzle"></div>
+        <!-- MENSAJE FINAL DE FORMACIÓN -->
+        <div class="card mensaje-final">
+            <h2>🌈 Palabras para tu formación</h2>
+            <p>Queridos niños, recuerden siempre:</p>
+            <ul>
+                <li>Sean curiosos y pregunten siempre lo que quieran aprender.</li>
+                <li>Respétense y respeten a los demás, cada persona es valiosa.</li>
+                <li>Trabajen con esfuerzo y nunca se rindan ante un desafío.</li>
+                <li>Cuiden la naturaleza y a los animales, nuestro mundo es único.</li>
+                <li>Sean amables, compartan su alegría y su cariño con todos.</li>
+            </ul>
+            <p style="text-align:right;"><b>💖 Su profesora siempre los apoyará y recordara con todo su corazón💖</b></p>
         </div>
 
     </section>
