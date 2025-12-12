@@ -1,45 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Banner Animado Vivo</title>
-    <link rel="stylesheet" href="estilo_banner.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banner Animado con Estrellas</title>
+<link rel="stylesheet" href="estilo_banner.css">
 </head>
 <body>
-    <div class="contenedor-central">
-        <div class="banner">
-            <img src="img/promo.jpg" alt="Banner" />
-        </div>
+<!-- Canvas para lluvia de estrellitas en toda la pantalla -->
+<canvas id="estrellitas"></canvas>
+
+<div class="contenedor-central">
+<h2 class="titulo-recuerdos">✨ Todos Nuestros Maravillosos Recuerdos de la Promoción 2025 del Poderoso Curso 6to  "C"✨</h2>
+
+
+    <!-- Banner con imagen rotativa -->
+    <div class="banner">
+        <img src="img/promo.jpg" alt="Banner" />
     </div>
 
-    <script>
-        const imagenes = [
-            'img/promo.jpg',
-            'img/recuerdo.jpg',
-            'img/carnaval.jpg',
-            'img/IMG-20251208-WA0019.jpg',
-            'img/IMG-20251208-WA0022.jpg',
-            'img/IMG-20251208-WA0025.jpg',
-            'img/IMG-20251208-WA0032.jpg',
-            'img/IMG-20251208-WA0046.jpg',
-            'img/viaje.jpg',
-            'img/IMG-20251208-WA0058.jpg',
-            'img/IMG-20251208-WA0060.jpg'
-        ];
+    <!-- Botones de música -->
+    <div class="contenedor-musica">
+        <button onclick="reproducirMusica()">▶ Reproducir Música</button>
+        <button onclick="pausarMusica()">⏸ Pausar Música</button>
+        <audio id="musicaBanner" src="musicas/musica2.mp3"></audio>
+    </div>
 
-        let indice = 0;
-        const bannerImg = document.querySelector('.banner img');
+</div>
 
-        function cambiarImagen() {
-            bannerImg.style.opacity = 0;
-            setTimeout(() => {
-                bannerImg.src = imagenes[indice];
-                bannerImg.style.opacity = 1;
-                indice = (indice + 1) % imagenes.length;
-            }, 300);
-        }
+<script>
+/* ------------------- IMÁGENES DEL BANNER ------------------- */
+const imagenes = [
+    'img/recuerdo.jpg',
+    'img/circo.jpg',
+    'img/carnaval.jpg',
+    'img/IMG-20251208-WA0019.jpg',
+    'img/IMG-20251208-WA0022.jpg',
+    'img/IMG-20251208-WA0025.jpg',
+    'img/IMG-20251208-WA0032.jpg',
+    'img/IMG-20251208-WA0046.jpg',
+    'img/viaje.jpg',
+    'img/IMG-20251208-WA0058.jpg',
+    'img/IMG-20251208-WA0060.jpg'
+];
 
-        setInterval(cambiarImagen, 3000);
-    </script>
+let indice = 0;
+const bannerImg = document.querySelector('.banner img');
+
+function cambiarImagen() {
+    bannerImg.style.opacity = 0;
+    setTimeout(() => {
+        bannerImg.src = imagenes[indice];
+        bannerImg.style.opacity = 1;
+        indice = (indice + 1) % imagenes.length;
+    }, 300);
+}
+
+setInterval(cambiarImagen, 3000);
+
+/* ------------------- LLUVIA DE ESTRELLITAS EN TODA LA PANTALLA ------------------- */
+const canvas = document.getElementById('estrellitas');
+const ctx = canvas.getContext('2d');
+
+let ancho = canvas.width = window.innerWidth;
+let alto = canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+    ancho = canvas.width = window.innerWidth;
+    alto = canvas.height = window.innerHeight;
+    crearEstrellitas();
+});
+
+const estrellas = [];
+const cantidad = 100; // más estrellas para toda la pantalla
+
+function crearEstrellitas() {
+    estrellas.length = 0;
+    for (let i = 0; i < cantidad; i++) {
+        estrellas.push({
+            x: Math.random() * ancho,
+            y: Math.random() * alto,
+            r: Math.random() * 2 + 1,
+            velocidad: Math.random() * 1.5 + 0.5,
+            color: `hsl(${Math.random()*360}, 100%, 80%)` // estrellas coloridas
+        });
+    }
+}
+crearEstrellitas();
+
+function animarEstrellitas() {
+    ctx.clearRect(0, 0, ancho, alto);
+    estrellas.forEach(e => {
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+        ctx.fillStyle = e.color;
+        ctx.fill();
+        e.y += e.velocidad;
+        if (e.y > alto) e.y = -e.r;
+    });
+    requestAnimationFrame(animarEstrellitas);
+}
+animarEstrellitas();
+
+/* ------------------- MÚSICA ------------------- */
+const musica = document.getElementById('musicaBanner');
+
+function reproducirMusica() {
+    musica.play();
+}
+
+function pausarMusica() {
+    musica.pause();
+}
+</script>
 </body>
 </html>
