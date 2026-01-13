@@ -10,14 +10,18 @@ document.getElementById("pregunta").textContent = adivinanzas[actual].p;
 
 function comprobar() {
     let resp = document.getElementById("respuesta").value.toLowerCase().trim();
-
+    
     if (!resp) {
         alert("Escribe una respuesta 😊");
         return;
     }
-
+    
     if (resp === adivinanzas[actual].r) {
         alert("¡Correcto! 🌟");
+        // NUEVA: Cambiar a otra adivinanza
+        actual = Math.floor(Math.random() * adivinanzas.length);
+        document.getElementById("pregunta").textContent = adivinanzas[actual].p;
+        document.getElementById("respuesta").value = "";
     } else {
         alert("Intenta otra vez 😊");
     }
@@ -26,19 +30,26 @@ function comprobar() {
 /* ----------------------- SUMA MÁGICA ----------------------- */
 let a = Math.floor(Math.random() * 10);
 let b = Math.floor(Math.random() * 10);
-
 document.getElementById("sumita").textContent = `¿Cuánto es ${a} + ${b}?`;
 
 function verificarSuma() {
     let resp = parseInt(document.getElementById("resSuma").value);
-
+    
     if (isNaN(resp)) {
         alert("Ingresa un número 😊");
         return;
     }
-
-    if (resp === a + b) alert("¡Muy bien! 🌟");
-    else alert("Sigue intentando 😊");
+    
+    if (resp === a + b) {
+        alert("¡Muy bien! 🌟");
+        // NUEVA: Generar nueva suma
+        a = Math.floor(Math.random() * 10);
+        b = Math.floor(Math.random() * 10);
+        document.getElementById("sumita").textContent = `¿Cuánto es ${a} + ${b}?`;
+        document.getElementById("resSuma").value = "";
+    } else {
+        alert("Sigue intentando 😊");
+    }
 }
 
 /* ----------------------- MEMORIA ----------------------- */

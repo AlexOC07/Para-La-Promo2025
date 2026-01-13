@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recuerdo de Fin de Año</title>
+<title>Recuerdo Completo Promo 2025 - Curso Sexto "C"</title>
 <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
+<!-- Canvas para lluvia de estrellitas (SIEMPRE VISIBLE) -->
+<canvas id="estrellitas"></canvas>
 
 <header>
-    <h1>🌟 Recuerdo Para Mi Querido Curso Sexto "B" Promo 2025 🌟</h1>
+    <h1>🌟 Recuerdo Para Mi Querido Curso Sexto "C" Promo 2025 🌟</h1>
 
     <!-- Imagen centrada bajo el título -->
     <div class="contenedor-imagen-titulo">
@@ -18,21 +20,35 @@
 
     <h3>Con mucho cariño de su profesora Jhanet Cabrera Sandoval y pueden reproducir las músicas que les dedicó 💖</h3>
 
-    <!-- ======== Botones de música ======== -->
+    <!-- ======== Botones de música ORIGINALES ======== -->
     <div class="contenedor-musica">
         <button onclick="reproducir1()">Reproducir Música 1</button>
-        <!--<button onclick="reproducir2()">Reproducir Música 2</button>-->
         <button onclick="pausarTodo()">⏸ Pausar Música</button>
 
         <!-- Aquí cargas tus audios -->
         <audio id="musica1" src="musicas/musica1.mp3"></audio>
         <audio id="musica2" src="musicas/musica2.mp3"></audio>
     </div>
-
 </header>
 
-<main class="contenedor-principal">
+<!-- TÍTULO Y BANNER ANIMADO INTEGRADO -->
+<div class="contenedor-central">
+    <h2 class="titulo-recuerdos">✨ Todos Nuestros Maravillosos Recuerdos de la Promoción 2025 del Poderoso Curso 6to "C" ✨</h2>
 
+    <!-- Banner con imagen rotativa -->
+    <div class="banner">
+        <img src="img/promo.jpg" alt="Banner" id="bannerImg"/>
+    </div>
+
+    <!-- Botones de música del banner (musica2.mp3) -->
+    <div class="contenedor-musica">
+        <button onclick="reproducirMusica()">▶ Reproducir Música Banner</button>
+        <button onclick="pausarMusica()">⏸ Pausar Banner</button>
+        <audio id="musicaBanner" src="musicas/musica2.mp3"></audio>
+    </div>
+</div>
+
+<main class="contenedor-principal">
     <!-- MENSAJE DE LA PROFESORA -->
     <section class="mensaje-prof">
         <p>Mis Queridos niños:</p>
@@ -40,7 +56,7 @@
         Cada uno de ustedes tiene una luz única que ilumina el aula y llena mi corazón de alegría.<br>  
         Me siento orgullosa de todo lo que lograron, por su esfuerzo y por nunca rendirse siempre sigan adelante nunca se rindan y recuerden valorar todo lo que tienen.</p>
 
-        <p><b>“Ustedes pueden llegar tan lejos como crean en su corazón.”</b></p>
+        <p><b>"Ustedes pueden llegar tan lejos como crean en su corazón."</b></p>
 
         <p>Gracias por cada día compartido, por cada sonrisa, por cada abrazo y por enseñarme a mí también.  
         Jamás olviden que ustedes son especiales, valiosos y capaces de todo.</p>
@@ -48,14 +64,8 @@
         <p style="text-align:right;"><b>Con mucho cariño, su profesora Jhanet Cabrera Sandoval.</b></p>
     </section>
 
-    <!-- BOTÓN A LA GALERÍA -->
-    <section class="galeria">
-        <button class="btn" onclick="location.href='banner_animado.html'">📸 Ver Nuestros Recuerdos de todo el Año</button>
-    </section>
-
-    <!-- SECCIÓN DE JUEGOS -->
+    <!-- SECCIÓN DE JUEGOS (ELIMINÉ EL BOTÓN GALERÍA) -->
     <section class="juegos">
-
         <!-- ADIVINANZAS -->
         <div class="card">
             <h2>❓ Adivinanza Mágica</h2>
@@ -102,16 +112,93 @@
             </ul>
             <p style="text-align:right;"><b>💖 Su profesora siempre los apoyará y recordará con todo su corazón 💖</b></p>
         </div>
-
     </section>
-
 </main>
 
 <footer>
-    “Gracias por hacer de este año algo inolvidable.” 🌸
+    "Gracias por hacer de este año algo inolvidable." 🌸
 </footer>
 
+<!-- SCRIPTS: primero el original, luego el del banner -->
 <script src="script.js"></script>
+<script>
+/* ===== JAVASCRIPT DEL BANNER (IMÁGENES ROTATIVAS + ESTRELLITAS) ===== */
+const imagenes = [
+    'img/recuerdo.jpg',
+    'img/circo.jpg',
+    'img/carnaval.jpg',
+    'img/IMG-20251208-WA0019.jpg',
+    'img/IMG-20251208-WA0022.jpg',
+    'img/IMG-20251208-WA0025.jpg',
+    'img/IMG-20251208-WA0032.jpg',
+    'img/IMG-20251208-WA0046.jpg',
+    'img/viaje.jpg',
+    'img/IMG-20251208-WA0058.jpg',
+    'img/IMG-20251208-WA0060.jpg'
+];
+
+let indice = 0;
+const bannerImg = document.getElementById('bannerImg');
+
+function cambiarImagen() {
+    bannerImg.style.opacity = 0;
+    setTimeout(() => {
+        bannerImg.src = imagenes[indice];
+        bannerImg.style.opacity = 1;
+        indice = (indice + 1) % imagenes.length;
+    }, 300);
+}
+
+setInterval(cambiarImagen, 3000);
+
+// Lluvia de estrellitas
+const canvas = document.getElementById('estrellitas');
+const ctx = canvas.getContext('2d');
+
+let ancho = canvas.width = window.innerWidth;
+let alto = canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+    ancho = canvas.width = window.innerWidth;
+    alto = canvas.height = window.innerHeight;
+    crearEstrellitas();
+});
+
+const estrellas = [];
+const cantidad = 100;
+
+function crearEstrellitas() {
+    estrellas.length = 0;
+    for (let i = 0; i < cantidad; i++) {
+        estrellas.push({
+            x: Math.random() * ancho,
+            y: Math.random() * alto,
+            r: Math.random() * 2 + 1,
+            velocidad: Math.random() * 1.5 + 0.5,
+            color: `hsl(${Math.random()*360}, 100%, 80%)`
+        });
+    }
+}
+crearEstrellitas();
+
+function animarEstrellitas() {
+    ctx.clearRect(0, 0, ancho, alto);
+    estrellas.forEach(e => {
+        ctx.beginPath();
+        ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+        ctx.fillStyle = e.color;
+        ctx.fill();
+        e.y += e.velocidad;
+        if (e.y > alto) e.y = -e.r;
+    });
+    requestAnimationFrame(animarEstrellitas);
+}
+animarEstrellitas();
+
+// Música del banner
+const musicaBanner = document.getElementById('musicaBanner');
+function reproducirMusica() { musicaBanner.play(); }
+function pausarMusica() { musicaBanner.pause(); }
+</script>
 </body>
 </html>
-
